@@ -3,13 +3,13 @@
     "class_version": 8,
     "link_map": {
         "link101": {
-            "dst_id": "11111111-1111-1111-1111-000000000001",
+            "dst_id": "11111111-1111-1111-1111-000000000002",
             "dst_view_id": "input0",
-            "src_id": "11111111-1111-1111-1111-000000000002",
+            "src_id": "11111111-1111-1111-1111-000000000001",
             "src_view_id": "output0"
         },
         "link102": {
-            "dst_id": "11111111-1111-1111-1111-000000000002",
+            "dst_id": "11111111-1111-1111-1111-000000000001",
             "dst_view_id": "input0",
             "src_id": "11111111-1111-1111-1111-000000000000",
             "src_view_id": "output0"
@@ -23,7 +23,7 @@
         },
         "info": {
             "author": {
-                "value": "ssanikop@snaplogic.com"
+                "value": "pkona@snaplogic.com"
             },
             "label": {},
             "notes": {
@@ -38,9 +38,9 @@
         },
         "input": {},
         "output": {
-            "11111111-1111-1111-1111-000000000001_output0": {
+            "11111111-1111-1111-1111-000000000002_output0": {
                 "label": {
-                    "value": "JSON Parser - output0"
+                    "value": "Pipeline Execute - output0"
                 },
                 "view_type": {
                     "value": "document"
@@ -68,39 +68,30 @@
         "detail_map": {
             "11111111-1111-1111-1111-000000000000": {
                 "error": {},
-                "grid_x_int": 1,
-                "grid_y_int": 3,
-                "index": null,
+                "grid_x_int": 2,
+                "grid_y_int": 1,
                 "input": {},
                 "output": {},
-                "recommendation_id": null,
                 "rot_int": 0,
-                "rot_tail_int": 0,
-                "source": ""
+                "rot_tail_int": 0
             },
             "11111111-1111-1111-1111-000000000001": {
                 "error": {},
                 "grid_x_int": 3,
-                "grid_y_int": 3,
-                "index": null,
+                "grid_y_int": 1,
                 "input": {},
                 "output": {},
-                "recommendation_id": null,
                 "rot_int": 0,
-                "rot_tail_int": 0,
-                "source": ""
+                "rot_tail_int": 0
             },
             "11111111-1111-1111-1111-000000000002": {
                 "error": {},
-                "grid_x_int": 2,
-                "grid_y_int": 3,
-                "index": null,
+                "grid_x_int": 4,
+                "grid_y_int": 1,
                 "input": {},
                 "output": {},
-                "recommendation_id": null,
                 "rot_int": 0,
-                "rot_tail_int": 0,
-                "source": ""
+                "rot_tail_int": 0
             }
         },
         "pan_x_num": 0,
@@ -109,14 +100,26 @@
     },
     "snap_map": {
         "11111111-1111-1111-1111-000000000000": {
-            "class_id": "com-snaplogic-snaps-binary-simpleread",
+            "class_id": "com-snaplogic-snaps-confluentkafka-confluentkafkaconsumer",
             "class_version": 1,
             "instance_id": "11111111-1111-1111-1111-000000000000",
             "property_map": {
                 "account": {
                     "account_ref": {
                         "expression": false,
-                        "value": {}
+                        "value": {
+                            "label": {
+                                "expression": false,
+                                "value": "Field - Kafka Account (groundplex-datalake)"
+                            },
+                            "ref_class_id": {
+                                "value": "com-snaplogic-snaps-confluentkafka-confluentkafkaaccountnoauth"
+                            },
+                            "ref_id": {
+                                "expression": false,
+                                "value": null
+                            }
+                        }
                     }
                 },
                 "error": {
@@ -134,7 +137,7 @@
                 },
                 "info": {
                     "label": {
-                        "value": "File Reader"
+                        "value": "Confluent Kafka Consumer"
                     },
                     "notes": {
                         "value": null
@@ -146,31 +149,61 @@
                             "value": "output0"
                         },
                         "view_type": {
-                            "value": "binary"
+                            "value": "document"
                         }
                     }
                 },
                 "settings": {
-                    "enableStaging": {
-                        "value": true
+                    "ackTimeout": {
+                        "value": 10
+                    },
+                    "autoCommitLengthMsec": {
+                        "value": 5000
+                    },
+                    "autoOffsetReset": {
+                        "value": "Earliest"
                     },
                     "executeDuringPreview": {
                         "value": true
                     },
-                    "filePath": {
+                    "groupID": {
                         "expression": false,
-                        "value": "Tapingo_Sample.json"
+                        "value": "finance_dataset_accounts_consumer_group_1"
                     },
-                    "preventURLEncoding": {
+                    "maxWaitingTime": {
+                        "value": 2000
+                    },
+                    "messageCount": {
+                        "value": 9
+                    },
+                    "offset": {
+                        "expression": false,
+                        "value": null
+                    },
+                    "partitionNumber": {
+                        "expression": false,
+                        "value": null
+                    },
+                    "passThrough": {
                         "value": false
+                    },
+                    "seekType": {
+                        "value": "Beginning"
+                    },
+                    "syncCommit": {
+                        "value": true
+                    },
+                    "topics": {
+                        "expression": false,
+                        "value": "finance_dataset_accounts"
                     }
                 },
                 "view_serial": 100
             }
         },
         "11111111-1111-1111-1111-000000000001": {
-            "class_id": "com-snaplogic-snaps-transform-jsonparser",
-            "class_version": 1,
+            "class_id": "com-snaplogic-snaps-transform-datatransform",
+            "class_version": 4,
             "instance_id": "11111111-1111-1111-1111-000000000001",
             "property_map": {
                 "error": {
@@ -188,7 +221,7 @@
                 },
                 "info": {
                     "label": {
-                        "value": "JSON Parser"
+                        "value": "Mapper"
                     },
                     "notes": {
                         "value": null
@@ -200,7 +233,7 @@
                             "value": "input0"
                         },
                         "view_type": {
-                            "value": "binary"
+                            "value": "document"
                         }
                     }
                 },
@@ -215,24 +248,56 @@
                     }
                 },
                 "settings": {
-                    "allowNonStandardJson": {
+                    "nullSafeAccess": {
                         "value": true
                     },
-                    "arrayElementsAsDocuments": {
-                        "value": true
-                    },
-                    "jsonFilterPath": {
-                        "value": null
-                    },
-                    "jsonLines": {
+                    "passThrough": {
                         "value": false
+                    },
+                    "transformations": {
+                        "value": {
+                            "mappingRoot": {
+                                "value": "$"
+                            },
+                            "mappingTable": {
+                                "value": [
+                                    {
+                                        "expression": {
+                                            "expression": true,
+                                            "value": "$key"
+                                        },
+                                        "targetPath": {
+                                            "value": "$key"
+                                        }
+                                    },
+                                    {
+                                        "expression": {
+                                            "expression": true,
+                                            "value": "$value"
+                                        },
+                                        "targetPath": {
+                                            "value": "$value"
+                                        }
+                                    },
+                                    {
+                                        "expression": {
+                                            "expression": true,
+                                            "value": "$metadata.offset"
+                                        },
+                                        "targetPath": {
+                                            "value": "$offset"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
                     }
                 },
                 "view_serial": 100
             }
         },
         "11111111-1111-1111-1111-000000000002": {
-            "class_id": "com-snaplogic-snaps-transform-transcoder",
+            "class_id": "com-snaplogic-snaps-flow-pipeexec",
             "class_version": 1,
             "instance_id": "11111111-1111-1111-1111-000000000002",
             "property_map": {
@@ -251,7 +316,7 @@
                 },
                 "info": {
                     "label": {
-                        "value": "Transcoder"
+                        "value": "Pipeline Execute"
                     },
                     "notes": {
                         "value": null
@@ -263,7 +328,7 @@
                             "value": "input0"
                         },
                         "view_type": {
-                            "value": "binary"
+                            "value": "document"
                         }
                     }
                 },
@@ -273,18 +338,48 @@
                             "value": "output0"
                         },
                         "view_type": {
-                            "value": "binary"
+                            "value": "document"
                         }
                     }
                 },
                 "settings": {
-                    "charsetFrom": {
+                    "execLabel": {
                         "expression": false,
-                        "value": "ISO-8859-15"
+                        "value": null
                     },
-                    "charsetTo": {
+                    "executable_during_suggest": {
+                        "value": false
+                    },
+                    "loopDocument": {
+                        "expression": true
+                    },
+                    "params": {
+                        "value": [
+                            {
+                                "paramName": {
+                                    "value": "filename"
+                                },
+                                "paramValue": {
+                                    "expression": true,
+                                    "value": "\"o_\"+$offset+\"_k\"+$key+\".json\""
+                                }
+                            }
+                        ]
+                    },
+                    "pipeline": {
                         "expression": false,
-                        "value": "UTF-8"
+                        "value": "Write file to S3"
+                    },
+                    "poolSize": {
+                        "expression": false,
+                        "value": 5
+                    },
+                    "reuse": {
+                        "value": false
+                    },
+                    "snaplex": {
+                        "expression": false,
+                        "value": null
                     }
                 },
                 "view_serial": 100

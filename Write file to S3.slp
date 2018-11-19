@@ -2,16 +2,16 @@
     "class_id": "com-snaplogic-pipeline",
     "class_version": 8,
     "link_map": {
+        "link100": {
+            "dst_id": "11111111-1111-1111-1111-000000000000",
+            "dst_view_id": "input0",
+            "src_id": "11111111-1111-1111-1111-000000000001",
+            "src_view_id": "output0"
+        },
         "link101": {
             "dst_id": "11111111-1111-1111-1111-000000000001",
             "dst_view_id": "input0",
             "src_id": "11111111-1111-1111-1111-000000000002",
-            "src_view_id": "output0"
-        },
-        "link102": {
-            "dst_id": "11111111-1111-1111-1111-000000000002",
-            "dst_view_id": "input0",
-            "src_id": "11111111-1111-1111-1111-000000000000",
             "src_view_id": "output0"
         }
     },
@@ -23,7 +23,7 @@
         },
         "info": {
             "author": {
-                "value": "ssanikop@snaplogic.com"
+                "value": "pkona@snaplogic.com"
             },
             "label": {},
             "notes": {
@@ -36,17 +36,17 @@
                 "value": null
             }
         },
-        "input": {},
-        "output": {
-            "11111111-1111-1111-1111-000000000001_output0": {
+        "input": {
+            "11111111-1111-1111-1111-000000000002_input0": {
                 "label": {
-                    "value": "JSON Parser - output0"
+                    "value": "Mapper - input0"
                 },
                 "view_type": {
                     "value": "document"
                 }
             }
         },
+        "output": {},
         "settings": {
             "error_param_table": {
                 "value": []
@@ -59,7 +59,19 @@
                 "value": []
             },
             "param_table": {
-                "value": []
+                "value": [
+                    {
+                        "capture": {
+                            "value": true
+                        },
+                        "key": {
+                            "value": "filename"
+                        },
+                        "value": {
+                            "value": "1.json"
+                        }
+                    }
+                ]
             }
         }
     },
@@ -68,39 +80,30 @@
         "detail_map": {
             "11111111-1111-1111-1111-000000000000": {
                 "error": {},
-                "grid_x_int": 1,
-                "grid_y_int": 3,
-                "index": null,
+                "grid_x_int": 5,
+                "grid_y_int": 2,
                 "input": {},
                 "output": {},
-                "recommendation_id": null,
                 "rot_int": 0,
-                "rot_tail_int": 0,
-                "source": ""
+                "rot_tail_int": 0
             },
             "11111111-1111-1111-1111-000000000001": {
                 "error": {},
-                "grid_x_int": 3,
-                "grid_y_int": 3,
-                "index": null,
+                "grid_x_int": 4,
+                "grid_y_int": 2,
                 "input": {},
                 "output": {},
-                "recommendation_id": null,
                 "rot_int": 0,
-                "rot_tail_int": 0,
-                "source": ""
+                "rot_tail_int": 0
             },
             "11111111-1111-1111-1111-000000000002": {
                 "error": {},
-                "grid_x_int": 2,
-                "grid_y_int": 3,
-                "index": null,
+                "grid_x_int": 3,
+                "grid_y_int": 2,
                 "input": {},
                 "output": {},
-                "recommendation_id": null,
                 "rot_int": 0,
-                "rot_tail_int": 0,
-                "source": ""
+                "rot_tail_int": 0
             }
         },
         "pan_x_num": 0,
@@ -109,8 +112,8 @@
     },
     "snap_map": {
         "11111111-1111-1111-1111-000000000000": {
-            "class_id": "com-snaplogic-snaps-binary-simpleread",
-            "class_version": 1,
+            "class_id": "com-snaplogic-snaps-binary-write",
+            "class_version": 3,
             "instance_id": "11111111-1111-1111-1111-000000000000",
             "property_map": {
                 "account": {
@@ -134,61 +137,7 @@
                 },
                 "info": {
                     "label": {
-                        "value": "File Reader"
-                    },
-                    "notes": {
-                        "value": null
-                    }
-                },
-                "output": {
-                    "output0": {
-                        "label": {
-                            "value": "output0"
-                        },
-                        "view_type": {
-                            "value": "binary"
-                        }
-                    }
-                },
-                "settings": {
-                    "enableStaging": {
-                        "value": true
-                    },
-                    "executeDuringPreview": {
-                        "value": true
-                    },
-                    "filePath": {
-                        "expression": false,
-                        "value": "Tapingo_Sample.json"
-                    },
-                    "preventURLEncoding": {
-                        "value": false
-                    }
-                },
-                "view_serial": 100
-            }
-        },
-        "11111111-1111-1111-1111-000000000001": {
-            "class_id": "com-snaplogic-snaps-transform-jsonparser",
-            "class_version": 1,
-            "instance_id": "11111111-1111-1111-1111-000000000001",
-            "property_map": {
-                "error": {
-                    "error0": {
-                        "label": {
-                            "value": "error0"
-                        },
-                        "view_type": {
-                            "value": "document"
-                        }
-                    },
-                    "error_behavior": {
-                        "value": "fail"
-                    }
-                },
-                "info": {
-                    "label": {
-                        "value": "JSON Parser"
+                        "value": "File Writer"
                     },
                     "notes": {
                         "value": null
@@ -204,27 +153,103 @@
                         }
                     }
                 },
-                "output": {
-                    "output0": {
+                "settings": {
+                    "UserPermissionsKey": {
+                        "value": []
+                    },
+                    "createDir": {
+                        "value": false
+                    },
+                    "executable_during_suggest": {
+                        "value": false
+                    },
+                    "fileAction": {
+                        "value": "OVERWRITE"
+                    },
+                    "filename": {
+                        "expression": true,
+                        "value": "_filename"
+                    },
+                    "validate": {
+                        "value": false
+                    },
+                    "writeEmptyFile": {
+                        "value": false
+                    },
+                    "writeHeader": {
+                        "value": false
+                    }
+                },
+                "view_serial": 100
+            }
+        },
+        "11111111-1111-1111-1111-000000000001": {
+            "class_id": "com-snaplogic-snaps-transform-jsonformatter",
+            "class_version": 2,
+            "instance_id": "11111111-1111-1111-1111-000000000001",
+            "property_map": {
+                "error": {
+                    "error0": {
                         "label": {
-                            "value": "output0"
+                            "value": "error0"
+                        },
+                        "view_type": {
+                            "value": "binary"
+                        }
+                    },
+                    "error_behavior": {
+                        "value": "fail"
+                    }
+                },
+                "info": {
+                    "label": {
+                        "value": "JSON Formatter"
+                    }
+                },
+                "input": {
+                    "input0": {
+                        "label": {
+                            "value": "input0"
                         },
                         "view_type": {
                             "value": "document"
                         }
                     }
                 },
+                "output": {
+                    "output0": {
+                        "label": {
+                            "value": "output0"
+                        },
+                        "view_type": {
+                            "value": "binary"
+                        }
+                    }
+                },
                 "settings": {
-                    "allowNonStandardJson": {
-                        "value": true
+                    "contentPath": {
+                        "value": "$"
                     },
-                    "arrayElementsAsDocuments": {
-                        "value": true
+                    "formatSingleDocument": {
+                        "value": false
                     },
-                    "jsonFilterPath": {
-                        "value": null
+                    "header": {
+                        "value": [
+                            {
+                                "expression": {
+                                    "expression": true,
+                                    "value": ""
+                                }
+                            }
+                        ]
+                    },
+                    "ignoreEmptyStream": {
+                        "value": false
                     },
                     "jsonLines": {
+                        "value": false
+                    },
+                    "prettyPrint": {
                         "value": false
                     }
                 },
@@ -232,8 +257,8 @@
             }
         },
         "11111111-1111-1111-1111-000000000002": {
-            "class_id": "com-snaplogic-snaps-transform-transcoder",
-            "class_version": 1,
+            "class_id": "com-snaplogic-snaps-transform-datatransform",
+            "class_version": 4,
             "instance_id": "11111111-1111-1111-1111-000000000002",
             "property_map": {
                 "error": {
@@ -251,7 +276,7 @@
                 },
                 "info": {
                     "label": {
-                        "value": "Transcoder"
+                        "value": "Mapper"
                     },
                     "notes": {
                         "value": null
@@ -263,7 +288,7 @@
                             "value": "input0"
                         },
                         "view_type": {
-                            "value": "binary"
+                            "value": "document"
                         }
                     }
                 },
@@ -273,18 +298,36 @@
                             "value": "output0"
                         },
                         "view_type": {
-                            "value": "binary"
+                            "value": "document"
                         }
                     }
                 },
                 "settings": {
-                    "charsetFrom": {
-                        "expression": false,
-                        "value": "ISO-8859-15"
+                    "nullSafeAccess": {
+                        "value": true
                     },
-                    "charsetTo": {
-                        "expression": false,
-                        "value": "UTF-8"
+                    "passThrough": {
+                        "value": false
+                    },
+                    "transformations": {
+                        "value": {
+                            "mappingRoot": {
+                                "value": "$"
+                            },
+                            "mappingTable": {
+                                "value": [
+                                    {
+                                        "expression": {
+                                            "expression": true,
+                                            "value": "$"
+                                        },
+                                        "targetPath": {
+                                            "value": "$"
+                                        }
+                                    }
+                                ]
+                            }
+                        }
                     }
                 },
                 "view_serial": 100

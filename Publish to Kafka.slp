@@ -5,13 +5,13 @@
         "link101": {
             "dst_id": "11111111-1111-1111-1111-000000000001",
             "dst_view_id": "input0",
-            "src_id": "11111111-1111-1111-1111-000000000002",
-            "src_view_id": "output0"
+            "src_id": "11111111-1111-1111-1111-000000000000",
+            "src_view_id": "outputRows"
         },
         "link102": {
             "dst_id": "11111111-1111-1111-1111-000000000002",
             "dst_view_id": "input0",
-            "src_id": "11111111-1111-1111-1111-000000000000",
+            "src_id": "11111111-1111-1111-1111-000000000001",
             "src_view_id": "output0"
         }
     },
@@ -38,9 +38,9 @@
         },
         "input": {},
         "output": {
-            "11111111-1111-1111-1111-000000000001_output0": {
+            "11111111-1111-1111-1111-000000000002_output101": {
                 "label": {
-                    "value": "JSON Parser - output0"
+                    "value": "Confluent Kafka Producer - output0"
                 },
                 "view_type": {
                     "value": "document"
@@ -68,39 +68,30 @@
         "detail_map": {
             "11111111-1111-1111-1111-000000000000": {
                 "error": {},
-                "grid_x_int": 1,
-                "grid_y_int": 3,
-                "index": null,
+                "grid_x_int": 2,
+                "grid_y_int": 2,
                 "input": {},
                 "output": {},
-                "recommendation_id": null,
                 "rot_int": 0,
-                "rot_tail_int": 0,
-                "source": ""
+                "rot_tail_int": 0
             },
             "11111111-1111-1111-1111-000000000001": {
                 "error": {},
                 "grid_x_int": 3,
-                "grid_y_int": 3,
-                "index": null,
+                "grid_y_int": 2,
                 "input": {},
                 "output": {},
-                "recommendation_id": null,
                 "rot_int": 0,
-                "rot_tail_int": 0,
-                "source": ""
+                "rot_tail_int": 0
             },
             "11111111-1111-1111-1111-000000000002": {
                 "error": {},
-                "grid_x_int": 2,
-                "grid_y_int": 3,
-                "index": null,
+                "grid_x_int": 4,
+                "grid_y_int": 2,
                 "input": {},
                 "output": {},
-                "recommendation_id": null,
                 "rot_int": 0,
-                "rot_tail_int": 0,
-                "source": ""
+                "rot_tail_int": 0
             }
         },
         "pan_x_num": 0,
@@ -109,14 +100,26 @@
     },
     "snap_map": {
         "11111111-1111-1111-1111-000000000000": {
-            "class_id": "com-snaplogic-snaps-binary-simpleread",
-            "class_version": 1,
+            "class_id": "com-snaplogic-snaps-oracle-select",
+            "class_version": 3,
             "instance_id": "11111111-1111-1111-1111-000000000000",
             "property_map": {
                 "account": {
                     "account_ref": {
                         "expression": false,
-                        "value": {}
+                        "value": {
+                            "label": {
+                                "expression": false,
+                                "value": "Oracle SE Demo db:salesora on cwztruwzzvnq.us-east-1.rds.amazonaws.com"
+                            },
+                            "ref_class_id": {
+                                "value": "com-snaplogic-snap-api-sql-accounts-oraclethindatabaseaccount"
+                            },
+                            "ref_id": {
+                                "expression": false,
+                                "value": null
+                            }
+                        }
                     }
                 },
                 "error": {
@@ -134,42 +137,67 @@
                 },
                 "info": {
                     "label": {
-                        "value": "File Reader"
+                        "value": "Oracle - Select"
                     },
                     "notes": {
                         "value": null
                     }
                 },
                 "output": {
-                    "output0": {
+                    "outputRows": {
                         "label": {
-                            "value": "output0"
+                            "value": "rows"
                         },
                         "view_type": {
-                            "value": "binary"
+                            "value": "document"
                         }
                     }
                 },
                 "settings": {
-                    "enableStaging": {
-                        "value": true
+                    "autoCommit": {
+                        "value": "False"
                     },
-                    "executeDuringPreview": {
-                        "value": true
-                    },
-                    "filePath": {
-                        "expression": false,
-                        "value": "Tapingo_Sample.json"
-                    },
-                    "preventURLEncoding": {
+                    "ignoreEmptyResult": {
                         "value": false
+                    },
+                    "limitOffset": {
+                        "expression": false,
+                        "value": null
+                    },
+                    "limitRows": {
+                        "expression": false,
+                        "value": null
+                    },
+                    "matchDataTypes": {
+                        "value": false
+                    },
+                    "orderBy": {
+                        "value": []
+                    },
+                    "outputFields": {
+                        "value": []
+                    },
+                    "passThrough": {
+                        "value": true
+                    },
+                    "schemaName": {
+                        "expression": false,
+                        "value": "\"FINANCE_DB\""
+                    },
+                    "tableName": {
+                        "expression": false,
+                        "value": "\"FINANCE_DB\".\"ACCOUNT\""
+                    },
+                    "whereClause": {
+                        "expression": false,
+                        "value": null
                     }
                 },
                 "view_serial": 100
             }
         },
         "11111111-1111-1111-1111-000000000001": {
-            "class_id": "com-snaplogic-snaps-transform-jsonparser",
+            "class_id": "com-snaplogic-snaps-transform-groupbyn",
             "class_version": 1,
             "instance_id": "11111111-1111-1111-1111-000000000001",
             "property_map": {
@@ -188,7 +216,7 @@
                 },
                 "info": {
                     "label": {
-                        "value": "JSON Parser"
+                        "value": "Group By N"
                     },
                     "notes": {
                         "value": null
@@ -200,7 +228,7 @@
                             "value": "input0"
                         },
                         "view_type": {
-                            "value": "binary"
+                            "value": "document"
                         }
                     }
                 },
@@ -215,27 +243,39 @@
                     }
                 },
                 "settings": {
-                    "allowNonStandardJson": {
-                        "value": true
+                    "groupSize": {
+                        "value": 500
                     },
-                    "arrayElementsAsDocuments": {
-                        "value": true
-                    },
-                    "jsonFilterPath": {
-                        "value": null
-                    },
-                    "jsonLines": {
-                        "value": false
+                    "targetField": {
+                        "value": "group"
                     }
                 },
                 "view_serial": 100
             }
         },
         "11111111-1111-1111-1111-000000000002": {
-            "class_id": "com-snaplogic-snaps-transform-transcoder",
+            "class_id": "com-snaplogic-snaps-confluentkafka-confluentkafkaproducer",
             "class_version": 1,
             "instance_id": "11111111-1111-1111-1111-000000000002",
             "property_map": {
+                "account": {
+                    "account_ref": {
+                        "expression": false,
+                        "value": {
+                            "label": {
+                                "expression": false,
+                                "value": "Field - Kafka Account (groundplex-datalake)"
+                            },
+                            "ref_class_id": {
+                                "value": "com-snaplogic-snaps-confluentkafka-confluentkafkaaccountnoauth"
+                            },
+                            "ref_id": {
+                                "expression": false,
+                                "value": null
+                            }
+                        }
+                    }
+                },
                 "error": {
                     "error0": {
                         "label": {
@@ -251,7 +291,7 @@
                 },
                 "info": {
                     "label": {
-                        "value": "Transcoder"
+                        "value": "Confluent Kafka Producer"
                     },
                     "notes": {
                         "value": null
@@ -263,31 +303,70 @@
                             "value": "input0"
                         },
                         "view_type": {
-                            "value": "binary"
+                            "value": "document"
                         }
                     }
                 },
                 "output": {
-                    "output0": {
+                    "output101": {
                         "label": {
                             "value": "output0"
                         },
                         "view_type": {
-                            "value": "binary"
+                            "value": "document"
                         }
                     }
                 },
                 "settings": {
-                    "charsetFrom": {
-                        "expression": false,
-                        "value": "ISO-8859-15"
+                    "acks": {
+                        "value": "1 - Send with leader acknowledgement"
                     },
-                    "charsetTo": {
+                    "batchSize": {
                         "expression": false,
-                        "value": "UTF-8"
+                        "value": 16384
+                    },
+                    "clientID": {
+                        "expression": false,
+                        "value": null
+                    },
+                    "compressionType": {
+                        "value": "NONE"
+                    },
+                    "executable_during_suggest": {
+                        "value": false
+                    },
+                    "keyMessage": {
+                        "expression": true,
+                        "value": "Math.random()*1000"
+                    },
+                    "lingerTime": {
+                        "expression": false,
+                        "value": 0
+                    },
+                    "partitionNumber": {
+                        "expression": false,
+                        "value": null
+                    },
+                    "preserveMsgOrderWithRetry": {
+                        "value": false
+                    },
+                    "retriesProp": {
+                        "expression": false,
+                        "value": 0
+                    },
+                    "syncSending": {
+                        "value": false
+                    },
+                    "topics": {
+                        "expression": false,
+                        "value": "finance_dataset_accounts"
+                    },
+                    "valueMessage": {
+                        "expression": true,
+                        "value": "jsonPath($, \"$group[*]\")"
                     }
                 },
-                "view_serial": 100
+                "view_serial": 101
             }
         }
     }
